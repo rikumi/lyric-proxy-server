@@ -1,5 +1,9 @@
 # podez-proxy-server
-一个为老牌 Windows 音乐播放器软件 Airplay 3 提供歌词和图片下载服务的代理服务器。
+一个为老牌 Windows 音乐播放器软件 Airplay 3（又名 PodEZ）提供歌词和图片下载服务的代理服务器。
+
+## 效果展示
+
+![image](https://user-images.githubusercontent.com/5051300/130475315-8fbd7b2d-69fb-4a62-b69f-188e25919945.png)
 
 ## 使用
 ```
