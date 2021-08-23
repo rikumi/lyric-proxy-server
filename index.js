@@ -31,25 +31,14 @@ const server = http.createServer(async (request, response) => {
     if (pathname === '/0.2/') {
       const title = searchParams.get('ti');
       const artist = searchParams.get('ar');
-      const searchRes = await (await fetch(`https://music.163.com/api/search/get?type=1&s=${encodeURIComponent(`${title} - ${artist}`)}`)).json();
-      const { songs: songDetails } = await (await fetch(`https://music.163.com/api/song/detail?ids=[${searchRes.result.songs.map(song => song.id).join(',')}]`)).json();
-      const tracks = await Promise.all(searchRes.result.songs.map(async (song, index) => {
-        const { id: songId, name: songTitle, artists, album, duration } = song;
-        const songDetail = songDetails[index];
-        const artistsName = artists.map(artist => artist.name).join(', ');
-        const albumName = album.name;
-        return {
-          title: songTitle,
-          album: albumName,
-          artist: artistsName,
-          album_cover: [songDetail.album.picUrl.replace(/^https?:\/\//, '')],
-          artist_image: [],
-          lyric: [{
-            editor: '',
-            length: duration,
-            url: `http://lyric.airplayme.com/lrc/${songId}`,
-          }],
-        };
+      const searchRes = await (await fetch(`https://music.163.com/api/search/get?type=1&s=${encodeURIComponent(`${title} ${artist}`)}`)).json();
+      const detailRes = await (await fetch(`https://music.163.com/api/song/detail?ids=[${searchRes.result.songs.map(song => song.id).join(',')}]`)).json();
+      const tracks = searchRes.result.songs.map((song, index) => ({
+        title: song.name,
+        album: song.album.name,
+        artist: song.artists.map(artist => artist.name).join(', '),
+        album_cover: [detailRes.songs[index].album.picUrl.replace(/^https?:\/\//, '')],
+        lyric: [{ url: `http://lyric.airplayme.com/lrc/${song.id}` }],
       }));
       const data = JSON.stringify({ err_code: 0, tracks });
       console.log(`Sending ${tracks.length} search results for: ${title} - ${artist}:`, data);
@@ -62,6 +51,7 @@ const server = http.createServer(async (request, response) => {
       return respondWith(200, lyric);
     }
   } catch (e) {
+    console.error(e);
     return respondWith(500);
   }
 });
