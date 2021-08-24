@@ -56,4 +56,4 @@ const server = http.createServer(async (request, response) => {
   }
 });
 
-server.listen(8187);
+server.listen(process.env.PORT || 8187);
