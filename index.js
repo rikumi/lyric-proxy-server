@@ -9,16 +9,16 @@ process.on('unhandledRejection', (e) => { throw e });
 const server = http.createServer(async (request, response) => {
   const { method, url, headers } = request;
   console.log(method, url);
-  const { origin, searchParams, pathname } = new URL(url);
   const respondWith = async (code, data) => {
     response.writeHead(code);
     if (data) await new Promise(r => response.write(data, 'utf-8', r));
     response.end();
   };
+  if (url.startsWith('/')) {
+    return respondWith(200, 'podez-proxy-server is running');
+  }
+  const { origin, searchParams, pathname } = new URL(url);
   if (origin !== 'http://lyric.airplayme.com') {
-    if (url.startsWith('/')) {
-      return respondWith(200, 'podez-proxy-server is running');
-    }
     const handler = origin.startsWith('https') ? https : http;
     const proxyReq = handler.request(url, { method, headers });
     request.pipe(proxyReq);
