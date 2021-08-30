@@ -59,4 +59,4 @@ const server = http.createServer(async (request, response) => {
   }
 });
 
-server.listen(process.env.PORT || 8187);
+module.exports = server;
