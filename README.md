@@ -3,7 +3,7 @@
 
 ## 效果展示
 
-![image](https://user-images.githubusercontent.com/5051300/134683774-471b16a1-f6c5-4692-b4c7-739f0f7b1514.png)
+![image](https://user-images.githubusercontent.com/5051300/134684454-86e8cea6-084f-43bd-b6e8-5a57aca2b793.png)
 ![image](https://user-images.githubusercontent.com/5051300/134683858-1fba9c99-688d-4a34-bd98-723ccb7b0f1a.png)
 
 
