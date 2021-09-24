@@ -3,8 +3,9 @@
 
 ## 效果展示
 
-![image](https://user-images.githubusercontent.com/5051300/130475315-8fbd7b2d-69fb-4a62-b69f-188e25919945.png)
-![image](https://user-images.githubusercontent.com/5051300/130475796-2b6732f4-0ec7-430c-98b4-c9468940f36c.png)
+![image](https://user-images.githubusercontent.com/5051300/134683774-471b16a1-f6c5-4692-b4c7-739f0f7b1514.png)
+![image](https://user-images.githubusercontent.com/5051300/134683858-1fba9c99-688d-4a34-bd98-723ccb7b0f1a.png)
+
 
 ## 使用
 ```
