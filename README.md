@@ -15,7 +15,7 @@ npm run start
 
 在 Airplay3 设置 - 网络连接中，选择 “使用自定义的代理服务器”，填写 HTTP 代理服务器 localhost 端口 8187，即可进行词图搜索。
 
-也可以使用部署好的服务器 podez.herokuapp.com 端口 80。
+也可以使用部署好的服务器 pod.rikumi.dev 端口 8187。
 
 ## 心路历程
 
