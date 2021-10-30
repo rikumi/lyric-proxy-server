@@ -19,6 +19,8 @@ const server = http.createServer(async (request, response) => {
   }
   const { origin, searchParams, pathname } = new URL(url);
   if (origin !== 'http://lyric.airplayme.com') {
+    // 如果客户端支持，https 并不会走到这里，而是发 CONNECT 请求过来，但暂时没出现这个情况
+    // 如果后续网易云的图片变成 https 但客户端不支持的话，需要改成跟歌词一样套一个 http 接口
     const handler = origin.startsWith('https') ? https : http;
     const proxyReq = handler.request(url, { method, headers });
     request.pipe(proxyReq);
