@@ -1,5 +1,5 @@
 {
-  "name": "podez-proxy-server",
+  "name": "lyric-proxy-server",
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
@@ -9,6 +9,7 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
+    "http-proxy": "^1.18.1",
     "node-fetch": "^2.6.1"
   },
   "engines": {
