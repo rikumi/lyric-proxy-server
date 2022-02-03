@@ -49,7 +49,7 @@ const server = http.createServer(async (request, response) => {
     }
     // Other requests
     else {
-      proxy.web(request, response);
+      proxy.web(request, response, { target: `http://localhost:${process.env.PORT || 8187}` });
     }
   } catch (e) {
     console.error(e);
