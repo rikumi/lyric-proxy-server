@@ -9,7 +9,6 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
-    "http-proxy": "^1.18.1",
     "node-fetch": "^2.6.1"
   },
   "engines": {

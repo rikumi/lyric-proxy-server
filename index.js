@@ -1,15 +1,13 @@
 const http = require('http');
-const httpProxy = require('http-proxy');
+const https = require('https');
 const { URL } = require('url');
 const { searchMusic, getLyricForMusic } = require('./upstream/netease');
 
 process.on('uncaughtException', (e) => { console.error(e) });
 process.on('unhandledRejection', (e) => { throw e });
 
-const proxy = httpProxy.createProxyServer({});
-
 const server = http.createServer(async (request, response) => {
-  const { method, url } = request;
+  const { method, url, headers } = request;
   console.log(method, url);
   const respondWith = async (code, data) => {
     response.writeHead(code);
@@ -49,7 +47,14 @@ const server = http.createServer(async (request, response) => {
     }
     // Other requests
     else {
-      proxy.web(request, response, { target: `http://localhost:${process.env.PORT || 8187}` });
+      const proxyReq = http.request(url, { method, headers });
+      request.pipe(proxyReq);
+      const proxyRes = await new Promise(r => proxyReq.on('response', r));
+      response.writeHead(proxyRes.statusCode, proxyRes.headers);
+      proxyRes.pipe(response);
+      await new Promise(r => proxyRes.on('end', r));
+      response.end();
+      return;
     }
   } catch (e) {
     console.error(e);
