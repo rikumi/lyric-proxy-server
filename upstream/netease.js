@@ -14,5 +14,5 @@ exports.searchMusic = async (title, artist) => {
 
 exports.getLyricForMusic = async (id) => {
   const { lyric = '' } = await (await fetch(`https://music.163.com/api/song/media?id=${id}`)).json();
-  return lyric;
+  return lyric.replace(/^\[\w+:.*?]$/mg, '').trim();
 };
