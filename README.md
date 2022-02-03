@@ -4,8 +4,13 @@
 
 ## 效果展示
 
-![image](https://user-images.githubusercontent.com/5051300/134684454-86e8cea6-084f-43bd-b6e8-5a57aca2b793.png)
+Airplay3:
+
 ![image](https://user-images.githubusercontent.com/5051300/134683858-1fba9c99-688d-4a34-bd98-723ccb7b0f1a.png)
+
+Flyme:
+
+<img src="https://user-images.githubusercontent.com/5051300/152372555-255b088a-cc4c-4cae-a3ff-2589594d041d.jpeg" width="360"/> <img src="https://user-images.githubusercontent.com/5051300/152372583-495b62e6-60c9-48a9-8bbd-e1f2952667dc.jpeg" width="360"/>
 
 ## 使用
 
